@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24-Hour Hackathon Countdown</title>
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0d0d0d;
+            color: white;
+            text-align: center;
+            padding: 20px;
+
+        }
+
+        header {
+            padding-top: 80px;
+
+        }
+
+        h1 {
+            color: #ff4ed1;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 2em;
+            margin-top: 20px;
+        }
+
+        .time-box {
+            background-color: #350a6d;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .register-button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            background: linear-gradient(to right, #ff4ed1, #9236ff);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .register-button:hover {
+            background: linear-gradient(to right, #9236ff, #ff4ed1);
+        }
+
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -5;
+            /* Added to position video behind content */
+        }
+
+        /* .hamburger {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 3;
+            }
+            
+            .hamburger div {
+                width: 30px;
+                height: 3px;
+                background-color: white;
+                margin: 5px 0;
+                } */
+    </style>
+</head>
+
+<body>
+    <video autoplay muted loop class="background-video">
+        <source src="../hackathonbg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <!-- <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="menu" id="menu">
+        
+        <!-- <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a> -->
+    </div> -->
+    <header>
+
+        <h1>24-Hour Hackathon Challenge</h1>
+        <p>Join us for an exciting hackathon where innovation meets opportunity.</p>
+        <p><strong>Date:</strong> December 27th, 2024 | <strong>Location:</strong> PW Institute of Innovation</p>
+
+        <div id="countdown" class="countdown">
+            <div class="time-box"><span id="days">0</span> Days</div>
+            <div class="time-box"><span id="hours">0</span> Hours</div>
+            <div class="time-box"><span id="minutes">0</span> Minutes</div>
+            <div class="time-box"><span id="seconds">0</span> Seconds</div>
+        </div>
+
+        <button class="register-button">Register Now</button>
+    </header>
+
+    <script>
+        function updateCountdown() {
+            const eventDate = new Date('December 27, 2024 00:00:00').getTime();
+            const now = new Date().getTime();
+            const difference = eventDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours;
+                document.getElementById('minutes').textContent = minutes;
+                document.getElementById('seconds').textContent = seconds;
+            } else {
+                document.getElementById('countdown').innerHTML = "<h2>Hackathon Started!</h2>";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            margin-top: 100px;
+            background: #ffffff;
+            color: black;
+            font-size: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-2 {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .item span {
+            margin-left: 10px;
+        }
+
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            color: #6c757d;
+        }
+
+        .note {
+            background: #fff3cd;
+            color: #856404;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .team {
+
+            padding-left: 10px;
+        }
+
+        .mail {
+
+            padding-left: 10px;
+        }
+    </style>
+
+    <div class="container">
+        <div class="header-2">About the Event</div>
+        <div class="section">
+            <h3 style="text-align: left; padding-left: 15px;">Event Details</h3>
+            <div class="item">
+                <span class="icon">📅</span>
+                <span>Event Date: 27th December 2024</span>
+            </div>
+            <div class="item">
+                <span class="icon">📍</span>
+                <span>Venue: PW Institute of Innovation Campus</span>
+            </div>
+        </div>
+        <div class="section">
+            <h3 style="text-align: left; padding-left: 15px;">Timings</h3>
+            <div class="item">
+                <span class="icon">⏰</span>
+                <span>11:00 AM, 27th December 2024 - Hackathon Begins</span>
+            </div>
+            <div class="item">
+                <span class="icon">⏰</span>
+                <span>10:00 AM, 28th December 2024 - Submission Deadline</span>
+            </div>
+            <div class="item">
+                <span class="icon">⏰</span>
+                <span>12:00 PM, 28th December 2024 - Shortlisted Teams Announcement</span>
+            </div>
+            <div class="item">
+                <span class="icon">⏰</span>
+                <span>12:00 PM - 2:00 PM, 28th December 2024 - Selected Teams Presentation</span>
+            </div>
+            <div class="item">
+                <span class="icon">⏰</span>
+                <span>3:00 PM, 28th December 2024 - Winners Announcement</span>
+            </div>
+        </div>
+        <div class="section">
+            <h3 style="text-align: left; padding-left: 15px;">Team Composition</h3>
+
+            <div class="item team">
+                <span>5 Students from SOT</span>
+            </div>
+            <div class="item team">
+                <span>1 Student from SOM</span>
+            </div>
+            <div class="item team">
+                <span>Faculty mentor assigned to each team</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3 style="text-align: left; padding-left: 15px;">Contact Information</h3>
+            <div class="item mail">
+                <span>Email: himanshu.shekhar@pw.live</span>
+            </div>
+            <div class="item mail">
+                <span>Email: raghav.gupta@pw.live</span>
+            </div>
+        </div>
+        <div class="note">
+            The problem statement will be released on-site during the event. Teams must register by 24th December 2024
+            to participate.
+        </div>
+    </div>
+
+    <style>
+        .card1 img {
+            width: 320px;
+            height: 250px;
+            object-fit: cover;
+            box-shadow: 10px rgb(255, 255, 255);
+
+        }
+
+        .card1 {
+
+            align-items: center;
+            justify-content: center;
+            border: 1px solid white;
+            width: 380px;
+            height: 340px;
+            background-color: white;
+            padding-top: 30px;
+            padding-bottom: 10px;
+
+            color: black;
+            border-radius: 10px;
+
+        }
+
+        .text-1 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+
+        }
+
+        .text-2 {
+            font-size: 15px;
+            margin-bottom: 5px;
+            color: rgb(74, 70, 70);
+            font-size: 14px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 3.6fr 3.6fr 3.6fr;
+            gap: 5px;
+            margin-top: 20px;
+        }
+
+        #event-details {
+            margin-top: 20px;
+            padding: 20px;
+        }
+    </style>
+    <div id="event-details">
+        <h2>Event Details</h2>
+        <div class="grid">
+            <div class="card1">
+                <img src="card1.avif" alt="coding">
+
+                <h3 class="text-1">24 Hours of Coding</h3>
+                <p class="text-2">Push your Limits in this intensive coding marathon</p>
+            </div>
+
+            <div class="card1">
+                <img src="card2.avif" alt="coding">
+
+                <h3 class="text-1">Meals Provided</h3>
+                <p class="text-2">Snacks and dinner will be provided to keep you energized</p>
+            </div>
+
+            <div class="card1">
+                <img src="card3.avif" alt="coding">
+                <i class="bi bi-arrows-expand-vertical"></i>
+                <h3 class="text-1">Problem Statement</h3>
+                <p class="text-2">Download Problem Statement</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <style>
+        #rules {
+            list-style-type: circle;
+
+            text-align: left;
+            font-size: 10px;
+            color: rgb(74, 70, 70);
+            font-weight: bold;
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+
+        #R&R {
+            font-size: 15px;
+        }
+
+        .rules {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            margin-top: 100px;
+            background: #ffffff;
+            color: black;
+
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+
+            margin-left: 40px;
+        }
+
+        li {
+            padding-bottom: 20px;
+        }
+    </style>
+    <div class="rules">
+        <h2 id="R&R">Rules & Regulations</h2>
+        <ul id="rules">
+            <li>Teams must consist of 6 members (5 SOT + 1 SOM)</li>
+            <li>Code plagiarism will result in immediate disqualification</li>
+            <li>All code must be original and created during the hackathon</li>
+            <li>All team members must be currently enrolled students</li>
+            <li>Teams must present their solution within the given time frame</li>
+        </ul>
+    </div>
+
+    <style>
+        .prize-grid {
+            display: grid;
+            grid-template-columns: 3.6fr 3.6fr 3.6fr;
+            gap: 5px;
+            margin-top: 20px;
+        }
+
+        .prize-reco {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            margin-top: 100px;
+            background: #ffffff;
+            color: black;
+
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .prizemoney {
+            color: #350a6d;
+            font-weight: bold;
+
+        }
+    </style>
+
+
+    <div class="prize-reco">
+        <h2>Prizes & recogination</h2>
+
+        <div class="prize-grid">
+
+            <div class="1stprize">
+                <i class="bi bi-trophy-fill" style="color: goldenrod;"></i>
+                <p>1st Prize</p>
+                <p class="prizemoney">&#8377 20,000</p>
+                <p>(Amazon Voucher)</p>
+
+            </div>
+            <div class="1stprize ">
+                <i class="bi bi-trophy-fill" style="color: silver;"></i>
+                <p>2st Prize</p>
+                <p class="prizemoney">&#8377 15,000</p>
+                <p>(Amazon Voucher)</p>
+
+            </div>
+            <div class="1stprize">
+                <i class="bi bi-trophy-fill" style="color: rgba(222, 71, 71, 0.905);"></i>
+                <p>3st Prize</p>
+                <p class="prizemoney">&#8377 10,000</p>
+                <p>(Amazon Voucher)</p>
+
+            </div>
+        </div>
+
+    </div>
+
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        /* Recognition Section */
+        .recognition-section {
+            text-align: center;
+            background:  #9e70ff; 
+            color: #fff;
+            padding: 20px;
+            margin-top: 70px;
+            max-width: 800px;
+            border-radius: 10px;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            
+            
+        }
+
+        .recognition-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .recognition-section p {
+            font-size: 1.2rem;
+        }
+
+        .recognition-section span {
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        /* Registration Section */
+        .registration-section {
+            text-align: center;
+            padding: 40px 20px;
+        
+        }
+
+        .registration-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        /* Registration Card */
+        .card {
+          
+            background:  #9e70ff; 
+            color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .register-btn {
+            background-color: #ffcc00;
+            color: #000;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .register-btn:hover {
+            background-color: #e6b800;
+        }
+
+        .deadline {
+            background-color: #ffefcc;
+            color: #000;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .deadline p {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            color: #fff;
+            opacity: 0.8;
+        }
+    </style>
+
+    <section class="recognition-section">
+        <h2>Additional Recognition</h2>
+        <p>Selected participants will get a chance to attend the <b>IOI-sponsored 5-Day School of Startups Workshop</b>
+            in Noida—<span>absolutely FREE!</span></p>
+    </section>
+
+    <section class="registration-section">
+        <h2>Register Your Team</h2>
+        <div class="card">
+            <h3>🎉 Join the Hackathon!</h3>
+            <p>Ready to showcase your skills? Gather your team and register now for an unforgettable experience!</p>
+            <button class="register-btn">Register Now</button>
+            <div class="deadline">
+                <p>📅 Registration deadline: <b>December 24th, 2024</b></p>
+            </div>
+            <p class="footer-text">Don’t miss the chance to compete and win exciting prizes!</p>
+        </div>
+    </section>
+ <style>
+    footer{
+        background-color: rgb(16, 2, 40);
+        height: 50px;
+        font-size: 10px;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        padding-left: 500px;
+
+
+    
+    }
+
+ </style>
+<footer>
+    <p>© 2024 PW Institute of Innovation. All rights reserved.</p>
+</footer>
+
+</body>
+
+</html>
